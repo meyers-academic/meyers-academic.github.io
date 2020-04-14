@@ -1,1 +1,0 @@
-# meyers-academic.github.io
