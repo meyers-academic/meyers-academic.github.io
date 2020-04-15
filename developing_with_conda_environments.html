@@ -23,12 +23,12 @@
 
 
 <meta name="author" content="Pat Meyers" />
-<meta name="description" content="Here is my resources page. This link will likely change at some point. Git ligo gitlab Python using conda environments" />
+<meta name="description" content="Here we&#39;ll discuss using conda environments, and installing a package in developer mode so you can edit it and immediately have the changes propagated. A good discussion is here. Start a new conda environment Create a new environment: conda create --name myenv conda activate /path/to/myenv Download cw_search_manager code …" />
 <meta name="keywords" content="">
 
 <meta property="og:site_name" content="Pat Meyers"/>
-<meta property="og:title" content="Pat&#39;s Resources Page"/>
-<meta property="og:description" content="Here is my resources page. This link will likely change at some point. Git ligo gitlab Python using conda environments"/>
+<meta property="og:title" content="Developing code within conda environments"/>
+<meta property="og:description" content="Here we&#39;ll discuss using conda environments, and installing a package in developer mode so you can edit it and immediately have the changes propagated. A good discussion is here. Start a new conda environment Create a new environment: conda create --name myenv conda activate /path/to/myenv Download cw_search_manager code …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="/"/>
 <meta property="og:type" content="article"/>
@@ -38,7 +38,7 @@
 <meta property="article:section" content="misc"/>
 <meta property="og:image" content="">
 
-  <title>Pat Meyers &ndash; Pat&#39;s Resources Page</title>
+  <title>Pat Meyers &ndash; Developing code within conda environments</title>
 
 </head>
 <body>
@@ -69,7 +69,7 @@
 <article class="single">
   <header>
       
-    <h1 id="pats-resources-page">Pat's Resources Page</h1>
+    <h1 id="developing-code-within-conda-environments">Developing code within conda environments</h1>
     <p>
           Posted on Wed 15 April 2020 in <a href="/category/misc.html">misc</a>
 
@@ -79,11 +79,28 @@
 
 
   <div>
-    <p>Here is my resources page. This link will likely change at some point.</p>
-<h1>Git</h1>
-<p><a href="ligo_gitlab.html">ligo gitlab</a></p>
-<h1>Python</h1>
-<p><a href="developing_with_conda_environments.html">using conda environments</a></p>
+    <p>Here we'll discuss using conda environments, and installing a package in developer mode so you can edit it and immediately have the changes propagated. A good discussion is <a href="https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html">here</a>.</p>
+<h1>Start a new conda environment</h1>
+<p>Create a new environment:</p>
+<div class="highlight"><pre><span></span>conda create --name myenv
+conda activate /path/to/myenv
+</pre></div>
+
+
+<h1>Download <code>cw_search_manager</code> code from github</h1>
+<p>See <a href="ligo_gitlab.html">here</a> for a discussion of using <a href="git.ligo.org"></a> on your computers and
+ssh keys and such.</p>
+<div class="highlight"><pre><span></span>git clone https://git.ligo.org/unimelb/cw_search_manager.git
+<span class="nb">cd</span> cw_search_manager
+pip install -e .
+</pre></div>
+
+
+<p>Note that the <code>pip install -e .</code> runs <code>python setup.py --install</code>  and the <code>-e</code>
+flag means it is in "developer" mode. Instead of copying the code to your
+<code>site-packages</code> it points your python path <em>to this directory</em> so that any
+changes you make are automatically propagated to your conda environment. This
+can be dangerous in general, but is quite useful when developing code.</p>
   </div>
   <div class="tag-cloud">
     <p>
