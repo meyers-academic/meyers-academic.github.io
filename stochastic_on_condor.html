@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/github.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+    <link href="/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Pat Meyers Atom">
+
+
+
+
+
+<meta name="author" content="Pat Meyers" />
+<meta name="description" content="Below is Philips magic script for running stochastic.m interactively on condor. #!/bin/bash if [ &#34;$#&#34; -ne 3 ]; then echo &#34;Usage: paramsFile jobsFile jobNumber&#34; exit 1 fi HOME=/home/stochastic export HOME MCRROOT=&#34;/ldcg/matlab_r2015a&#34; STOCH_PATH=${HOME}/O3/stochastic-pipeline/stochastic export STOCH_PATH matlab -nodesktop -nojvm -nosplash -noFigureWindows -nosoftwareopengl -singleCompThread \ -r &#34;try …" />
+<meta name="keywords" content="">
+
+<meta property="og:site_name" content="Pat Meyers"/>
+<meta property="og:title" content="Interactive matlab on condor"/>
+<meta property="og:description" content="Below is Philips magic script for running stochastic.m interactively on condor. #!/bin/bash if [ &#34;$#&#34; -ne 3 ]; then echo &#34;Usage: paramsFile jobsFile jobNumber&#34; exit 1 fi HOME=/home/stochastic export HOME MCRROOT=&#34;/ldcg/matlab_r2015a&#34; STOCH_PATH=${HOME}/O3/stochastic-pipeline/stochastic export STOCH_PATH matlab -nodesktop -nojvm -nosplash -noFigureWindows -nosoftwareopengl -singleCompThread \ -r &#34;try …"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/interactive-matlab-on-condor.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2020-04-20 00:00:00+10:00"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/pat-meyers.html">
+<meta property="article:section" content="matlab code"/>
+<meta property="og:image" content="">
+
+  <title>Pat Meyers &ndash; Interactive matlab on condor</title>
+
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/profile.png" alt="" title="">
+      </a>
+      <h1><a href=""></a></h1>
+
+
+      <nav>
+        <ul class="list">
+
+          <li><a href="index.html" target="_blank">Home</a></li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+      </ul>
+    </div>
+
+
+  </aside>
+  <main>
+
+
+<article class="single">
+  <header>
+      
+    <h1 id="interactive-matlab-on-condor">Interactive matlab on condor</h1>
+    <p>
+          Posted on Mon 20 April 2020 in <a href="/category/matlab-code.html">matlab code</a>
+
+
+    </p>
+  </header>
+
+
+  <div>
+    <p>Below is Philips magic script for running <code>stochastic.m</code> interactively on condor.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$#</span><span class="s2">&quot;</span> -ne <span class="m">3</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Usage: paramsFile jobsFile jobNumber&quot;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">HOME</span><span class="o">=</span>/home/stochastic
+<span class="nb">export</span> HOME
+<span class="nv">MCRROOT</span><span class="o">=</span><span class="s2">&quot;/ldcg/matlab_r2015a&quot;</span>
+
+<span class="nv">STOCH_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/O3/stochastic-pipeline/stochastic
+<span class="nb">export</span> STOCH_PATH
+
+matlab -nodesktop -nojvm -nosplash -noFigureWindows -nosoftwareopengl -singleCompThread <span class="se">\</span>
+    -r <span class="s2">&quot;try, \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/CrossCorr/src_cc&#39;); \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/Utilities&#39;); \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/Utilities/Channel&#39;); \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/Utilities/misc&#39;); \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/Utilities/FTSeries&#39;); \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/Utilities/detgeom/matlab&#39;); \</span>
+<span class="s2">          addpath(&#39;</span><span class="si">${</span><span class="nv">STOCH_PATH</span><span class="si">}</span><span class="s2">/Utilities/ligotools/matlab&#39;); \</span>
+<span class="s2">          tic; \</span>
+<span class="s2">          stochastic(&#39;</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">&#39;, &#39;</span><span class="si">${</span><span class="nv">2</span><span class="si">}</span><span class="s2">&#39;, &#39;</span><span class="si">${</span><span class="nv">3</span><span class="si">}</span><span class="s2">&#39;); \</span>
+<span class="s2">          jobTime = toc; \</span>
+<span class="s2">          fprintf(&#39;%s Job %d completed after %f seconds\n&#39;, datestr(now), </span><span class="si">${</span><span class="nv">3</span><span class="si">}</span><span class="s2">, jobTime); \</span>
+<span class="s2">        catch exc, \</span>
+<span class="s2">          fprintf(&#39;%s Job %d failed with error %s\n&#39;, datestr(now), </span><span class="si">${</span><span class="nv">3</span><span class="si">}</span><span class="s2">, exc.message); \</span>
+<span class="s2">        end; \</span>
+<span class="s2">        quit;&quot;</span> <span class="c1">#&gt;/dev/null 2&gt;&amp;1</span>
+</pre></div>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>    Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme by <a href="http://alexandrevicenzi.com" target="_blank">Alexandre Vicenzi</a>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Pat Meyers ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

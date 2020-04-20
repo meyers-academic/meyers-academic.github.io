@@ -52,4 +52,6 @@ can be dangerous in general, but is quite useful when developing code.&lt;/p&gt;
 &lt;h1&gt;Git&lt;/h1&gt;
 &lt;p&gt;&lt;a href="ligo_gitlab.html"&gt;ligo gitlab&lt;/a&gt;&lt;/p&gt;
 &lt;h1&gt;Python&lt;/h1&gt;
-&lt;p&gt;&lt;a href="developing_with_conda_environments.html"&gt;using conda environments&lt;/a&gt;&lt;/p&gt;</content><category term="misc"></category></entry></feed>
+&lt;p&gt;&lt;a href="developing_with_conda_environments.html"&gt;using conda environments&lt;/a&gt;&lt;/p&gt;
+&lt;h1&gt;Matlab&lt;/h1&gt;
+&lt;p&gt;&lt;a href="stochastic_on_condor.html"&gt;interactive matlab on condor&lt;/a&gt;&lt;/p&gt;</content><category term="misc"></category></entry></feed>

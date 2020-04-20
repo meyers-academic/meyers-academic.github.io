@@ -31,7 +31,7 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content=""/>
 
-  <title>Pat Meyers &ndash;     Category Review
+  <title>Pat Meyers &ndash;     Category matlab code
 </title>
 
 </head>
@@ -64,18 +64,34 @@
 
 <article>
   <header>
-    <h2><a href="/my-first-review.html#my-first-review">My First Review</a></h2>
+    <h2><a href="/interactive-matlab-on-condor.html#interactive-matlab-on-condor">Interactive matlab on condor</a></h2>
     <p>
-          Posted on Fri 03 December 2010 in <a href="/category/review.html">Review</a>
+          Posted on Mon 20 April 2020 in <a href="/category/matlab-code.html">matlab code</a>
 
 
 
     </p>
   </header>
   <div>
-      <p>Following is a review of my favorite mechanical keyboard.</p>
+      <p>Below is Philips magic script for running <code>stochastic.m</code> interactively on condor.</p>
+<div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$#</span><span class="s2">&quot;</span> -ne <span class="m">3</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> <span class="s2">&quot;Usage: paramsFile jobsFile jobNumber&quot;</span>
+    <span class="nb">exit</span> <span class="m">1</span>
+<span class="k">fi</span>
+
+<span class="nv">HOME</span><span class="o">=</span>/home/stochastic
+<span class="nb">export</span> HOME
+<span class="nv">MCRROOT</span><span class="o">=</span><span class="s2">&quot;/ldcg/matlab_r2015a&quot;</span>
+
+<span class="nv">STOCH_PATH</span><span class="o">=</span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/O3/stochastic-pipeline/stochastic
+<span class="nb">export</span> STOCH_PATH
+
+matlab -nodesktop -nojvm -nosplash -noFigureWindows -nosoftwareopengl -singleCompThread <span class="se">\</span>
+    -r <span class="s2">&quot;try …</span></pre></div>
       <br>
-      <a class="btn" href="/my-first-review.html#my-first-review">    Continue reading
+      <a class="btn" href="/interactive-matlab-on-condor.html#interactive-matlab-on-condor">    Continue reading
 </a>
   </div>
 </article>
